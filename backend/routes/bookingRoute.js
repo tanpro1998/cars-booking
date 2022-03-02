@@ -31,7 +31,7 @@ router.post("/bookcar", async (req, res) => {
       await newBooking.save();
       const car = await Car.findOne({ _id: req.body.car });
       car.bookedTimesSlots.push(req.body.bookedTimesSlots);
-      await car.save()
+      await car.save();
       res.send("Booking Successful");
     } else {
       return res.status(400).json(err);
@@ -43,7 +43,7 @@ router.post("/bookcar", async (req, res) => {
 
 router.get("/getallbookings", async (req, res) => {
   try {
-    const bookings = await Booking.find()
+    const bookings = await Booking.find();
     res.status(200).json(bookings);
   } catch (err) {
     return res.status(400).json(err);

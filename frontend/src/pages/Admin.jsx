@@ -8,7 +8,7 @@ import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Popconfirm, message } from "antd";
+import { Popconfirm } from "antd";
 
 function Admin() {
   const { cars } = useSelector((state) => state.carsReducer);

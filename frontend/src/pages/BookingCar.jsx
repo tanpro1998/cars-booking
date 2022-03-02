@@ -122,7 +122,7 @@ function BookingCar() {
               <h3>Total Amount: {totalAmount ? totalAmount : 0} $</h3>
               <StripeCheckout
                 token={onToken}
-                stripeKey="pk_test_51JbgRzDrivpegEIzT1BfYsVfvpHhAreHjUGrTfxP2YE2HSpBnaxHFNJyCXvNlhYt9d3cb1Lb3wkLDN426ojSQi9v00l9qgE4oX"
+                stripeKey={process.env.REACT_APP_PUBLIC_STRIPE_KEY}
                 shippingAddress
                 amount={totalAmount * 100}
                 currency="usd"
