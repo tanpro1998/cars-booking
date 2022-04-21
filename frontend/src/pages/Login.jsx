@@ -22,7 +22,7 @@ function Login() {
         <Col lg={16} style={{ position: "relative" }}>
           <img
             className="carImg"
-            src="https://www.teahub.io/photos/full/35-350624_sports-car-background-hd.jpg"
+            src="https://wallpapers.com/images/high/cool-red-sports-car-5qvk4eholw3m0ntt.jpg"
             alt=""
             data-aos="slide-right"
             data-aos-duration="1500"

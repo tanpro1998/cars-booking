@@ -23,7 +23,7 @@ function Register() {
         <Col lg={16} style={{ position: "relative" }}>
           <img
             className="carImg"
-            src="https://www.teahub.io/photos/full/35-350624_sports-car-background-hd.jpg"
+            src="https://wallpapercave.com/wp/wp4938109.jpg"
             alt=""
             data-aos="slide-left"
             data-aos-duration="1500"
@@ -56,7 +56,7 @@ function Register() {
               <Input type="password" />
             </Form.Item>
             <Form.Item
-              name="cpassword"
+              name="cfpassword"
               label="Confirm Password"
               rules={[{ required: true }]}
             >

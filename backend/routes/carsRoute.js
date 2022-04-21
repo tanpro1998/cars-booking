@@ -1,7 +1,7 @@
-const router = require("express").Router();
-const Cars = require("../models/carsModel");
-
-router.get("/getallcars", async (req, res) => {
+import express from "express";
+const carsRouter = express.Router();
+import { Cars } from "../models/carsModel.js";
+carsRouter.get("/getallcars", async (req, res) => {
   try {
     const cars = await Cars.find();
     res.status(200).json(cars);
@@ -10,7 +10,7 @@ router.get("/getallcars", async (req, res) => {
   }
 });
 
-router.post("/addcar", async (req, res) => {
+carsRouter.post("/addcar", async (req, res) => {
   try {
     const addNewCar = new Cars(req.body);
     await addNewCar.save();
@@ -20,7 +20,7 @@ router.post("/addcar", async (req, res) => {
   }
 });
 
-router.post("/editcar", async (req, res) => {
+carsRouter.post("/editcar", async (req, res) => {
   try {
     const car = await Cars.findOne({ _id: req.body._id });
     car.name = req.body.name;
@@ -37,7 +37,7 @@ router.post("/editcar", async (req, res) => {
   }
 });
 
-router.post("/deletecar", async (req, res) => {
+carsRouter.post("/deletecar", async (req, res) => {
   try {
     await Cars.findOneAndDelete({ _id: req.body.carid });
 
@@ -47,4 +47,4 @@ router.post("/deletecar", async (req, res) => {
   }
 });
 
-module.exports = router;
+export { carsRouter };

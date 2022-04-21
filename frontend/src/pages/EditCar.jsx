@@ -36,7 +36,7 @@ const EditCar = () => {
           {totalCars.length > 0 && (
             <Form
               initialValues={car}
-              className="bs1 p-2 mt-5"
+              className="bs1 p-5 mt-5 h-100"
               layout="vertical"
               onFinish={onFinish}
             >
@@ -78,7 +78,7 @@ const EditCar = () => {
                 <Input />
               </Form.Item>
               <div className="text-center">
-                <button className="btn1">SUBMIT</button>
+                <button className="btn1 mt-5">SUBMIT</button>
               </div>
             </Form>
           )}

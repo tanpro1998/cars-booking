@@ -10,9 +10,9 @@ function Layout(props) {
       <Menu.Item>
         <a href="/">Home</a>
       </Menu.Item>
-      <Menu.Item>
+      {/* <Menu.Item>
         <a href="/bookings">Bookings</a>
-      </Menu.Item>
+      </Menu.Item> */}
       <Menu.Item>
         <a href="/admin">Admin</a>
       </Menu.Item>
@@ -32,7 +32,7 @@ function Layout(props) {
       <div className="header bs1">
         <Row gulter={16} justify="center">
           <Col lg={20} sm={24} xs={24}>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex align-items-center justify-content-between">
               <Link to="/">
                 <h1 className="logo">Flash Cars.</h1>
               </Link>

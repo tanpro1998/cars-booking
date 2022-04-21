@@ -1,8 +1,24 @@
-const router = require("express").Router();
-const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
+import express from "express";
+const usersRouter = express.Router();
+import { User } from "../models/userModel.js";
+import bcrypt from "bcrypt";
 
-router.post("/login", async (req, res) => {
+usersRouter.post("/register", async (req, res) => {
+  const { name, username, password, cfpassword } = req.body;
+  if (password !== cfpassword)
+    return res.status(400).json({ err: "Password does'nt mach" });
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(password, salt);
+    const newUser = new User({ name, username, password: hashPassword });
+    await newUser.save();
+    res.status(200).json("Register Success");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+usersRouter.post("/login", async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await User.findOne({
@@ -13,7 +29,7 @@ router.post("/login", async (req, res) => {
       if (validPassword) {
         res.status(200).json(user);
       } else {
-        res.status(400).json({ error: "Invalid password" });
+        res.status(400).json({ error: "Wrong password" });
       }
     } else {
       res.status(401).json({ error: "User does not exist" });
@@ -23,18 +39,4 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/register", async (req, res) => {
-  const { name, username, password } = req.body;
-
-  try {
-    const salt = await bcrypt.genSalt(10);
-    const hashPassword = await bcrypt.hash(password, salt);
-    const newUser = new User({ name, username, password: hashPassword });
-    await newUser.save();
-    res.send("User register successful!");
-  } catch (err) {
-    return res.status(400).json(err);
-  }
-});
-
-module.exports = router;
+export { usersRouter };

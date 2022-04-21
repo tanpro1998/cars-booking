@@ -1,11 +1,17 @@
-const router = require("express").Router();
-const Booking = require("../models/bookingModel");
-const Car = require("../models/carsModel");
-const stripe = require("stripe")(
+import express from "express";
+const bookingsRouter = express.Router();
+import { Booking } from "../models/bookingModel.js";
+import { Cars } from "../models/carsModel.js";
+// const stripe = require("stripe")(
+//   "sk_test_51JbgRzDrivpegEIzHQVZVQV1e6pSatsLAG3Zipwcr8jTFsHn2NQEdxxbLSmrnqRQDKdfDCgmJeKehyGEOEQAW2gd00vQ2A1bcr"
+// );
+import Stripe from "stripe";
+
+const stripe = Stripe(
   "sk_test_51JbgRzDrivpegEIzHQVZVQV1e6pSatsLAG3Zipwcr8jTFsHn2NQEdxxbLSmrnqRQDKdfDCgmJeKehyGEOEQAW2gd00vQ2A1bcr"
 );
-const { v4: uuidv4 } = require("uuid");
-router.post("/bookcar", async (req, res) => {
+import { v4 } from "uuid";
+bookingsRouter.post("/bookcar", async (req, res) => {
   const { token } = req.body;
   try {
     const customer = await stripe.customers.create({
@@ -21,7 +27,7 @@ router.post("/bookcar", async (req, res) => {
         receipt_email: token.email,
       },
       {
-        idempotencyKey: uuidv4(),
+        idempotencyKey: v4(),
       }
     );
 
@@ -29,7 +35,7 @@ router.post("/bookcar", async (req, res) => {
       req.body.transactionId = payment.source.id;
       const newBooking = new Booking(req.body);
       await newBooking.save();
-      const car = await Car.findOne({ _id: req.body.car });
+      const car = await Cars.findOne({ _id: req.body.car });
       car.bookedTimesSlots.push(req.body.bookedTimesSlots);
       await car.save();
       res.send("Booking Successful");
@@ -41,7 +47,7 @@ router.post("/bookcar", async (req, res) => {
   }
 });
 
-router.get("/getallbookings", async (req, res) => {
+bookingsRouter.get("/getallbookings", async (req, res) => {
   try {
     const bookings = await Booking.find();
     res.status(200).json(bookings);
@@ -50,4 +56,4 @@ router.get("/getallbookings", async (req, res) => {
   }
 });
 
-module.exports = router;
+export { bookingsRouter };

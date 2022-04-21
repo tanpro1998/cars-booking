@@ -17,7 +17,11 @@ const AddCar = () => {
       {loading && <Loading />}
       <Row justify="center">
         <Col lg={12} sm={24}>
-          <Form className="bs1 p-2 mt-5" layout="vertical" onFinish={onFinish}>
+          <Form
+            className="bs1 p-5 mt-5 h-100"
+            layout="vertical"
+            onFinish={onFinish}
+          >
             <h3 className="text-center font-weight-bold">Add New Car</h3>
             <hr />
             <Form.Item
@@ -56,7 +60,7 @@ const AddCar = () => {
               <Input />
             </Form.Item>
             <div className="text-center">
-              <button className="btn1">ADD CAR</button>
+              <button className="btn1 mt-5">ADD CAR</button>
             </div>
           </Form>
         </Col>

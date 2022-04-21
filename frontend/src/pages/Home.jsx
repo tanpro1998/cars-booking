@@ -67,7 +67,7 @@ function Home() {
               <div className="car p-2 bs1">
                 <img src={car.image} alt="" className="carImg" />
                 <div className="car-content d-flex align-items-center justify-content-between">
-                  <div className="pl-2 pb-2">
+                  <div className="pl-2">
                     <p className="title">{car.name.toUpperCase()}</p>
                     <p className="desc font-weight-bold">
                       Rental Costs: {car.rentPerHour}$/h

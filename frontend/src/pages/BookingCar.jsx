@@ -12,10 +12,10 @@ import StripeCheckout from "react-stripe-checkout";
 
 function BookingCar() {
   const { carid } = useParams();
-  const [car, setCar] = useState({});
   const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
+  const [car, setCar] = useState({});
   const { RangePicker } = DatePicker;
   const [from, setFrom] = useState();
   const [to, setTo] = useState();
