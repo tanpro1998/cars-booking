@@ -3,6 +3,15 @@ const usersRouter = express.Router();
 import { User } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 
+usersRouter.get("/currentUser", async (req, res) => {
+  try {
+    const user = await User.find();
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 usersRouter.post("/register", async (req, res) => {
   const { name, username, password, cfpassword } = req.body;
   if (password !== cfpassword)
@@ -27,7 +36,8 @@ usersRouter.post("/login", async (req, res) => {
     if (user) {
       const validPassword = await bcrypt.compare(password, user.password);
       if (validPassword) {
-        res.status(200).json(user);
+        const {password, ...others} = user._doc
+        res.status(200).json({...others});
       } else {
         res.status(400).json({ error: "Wrong password" });
       }

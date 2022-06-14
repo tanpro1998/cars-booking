@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAllCars } from "../redux/actions/carsActions";
@@ -26,7 +26,7 @@ function BookingCar() {
 
   useEffect(() => {
     if (cars.length === 0) {
-      dispatch(getAllCars());
+      getAllCars(dispatch);
     } else {
       setCar(cars.find((item) => item._id === carid));
     }
@@ -37,6 +37,7 @@ function BookingCar() {
     if (driver) {
       setTotalAmount(totalAmount + totalHours * 30);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [driver, car.rentPerHour, totalHours]);
 
   const timeChange = (values) => {
@@ -44,6 +45,8 @@ function BookingCar() {
     setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
     setTotalHours(values[1].diff(values[0], "hours"));
   };
+
+  const navigate = useNavigate();
 
   const onToken = (token) => {
     const reqObj = {
@@ -58,7 +61,7 @@ function BookingCar() {
         to,
       },
     };
-    dispatch(bookCar(reqObj));
+    bookCar(reqObj, dispatch, navigate);
   };
 
   return (

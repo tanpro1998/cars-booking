@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../redux/actions/userActions";
 import AOS from "aos";
@@ -11,9 +11,10 @@ AOS.init();
 function Register() {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
+  const navigate = useNavigate()
 
   const onFinish = (values) => {
-    dispatch(userRegister(values));
+   userRegister(values, dispatch, navigate)
   };
   return (
     <div className="login">

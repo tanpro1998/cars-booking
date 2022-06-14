@@ -18,7 +18,7 @@ function Admin() {
   const [totalCars, setTotalCars] = useState([]);
 
   useEffect(() => {
-    dispatch(getAllCars());
+    getAllCars(dispatch)
   }, [dispatch]);
 
   useEffect(() => {
@@ -91,7 +91,7 @@ function Admin() {
                     <Popconfirm
                       title="Are you sure to delete this car?"
                       onConfirm={() => {
-                        dispatch(deleteCar({ carid: car._id }));
+                        deleteCar({ carid: car._id }, dispatch);
                       }}
                       okText="Yes"
                       cancelText="No"

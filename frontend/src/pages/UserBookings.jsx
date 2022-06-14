@@ -8,10 +8,9 @@ import { Col, Row } from "antd";
 const UserBookings = () => {
   const dispatch = useDispatch();
   const { bookings } = useSelector((state) => state.bookingsReducer);
-  console.log(bookings);
 
   useEffect(() => {
-    dispatch(getAllBookings());
+    getAllBookings(dispatch)
   }, [dispatch]);
   return (
     <Layout>

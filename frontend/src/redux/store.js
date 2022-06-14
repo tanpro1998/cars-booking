@@ -4,12 +4,14 @@ import thunk from "redux-thunk";
 import { carsReducer } from "./reducers/carsReducer";
 import { alertsReducer } from "./reducers/alertsReducer";
 import { bookingsReducer } from "./reducers/bookingsReducer";
+import { userReducer } from "./reducers/userReducers";
 const composeEnhancers = composeWithDevTools({});
 
 const rootReducer = combineReducers({
   carsReducer,
   alertsReducer,
   bookingsReducer,
+  userReducer,
 });
 
 const store = createStore(

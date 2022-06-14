@@ -4,13 +4,15 @@ import Layout from "../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { addCar } from "../redux/actions/carsActions";
 import Loading from "../components/Loading";
+import { useNavigate } from "react-router-dom";
 
 const AddCar = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
+  const navigate = useNavigate()
   const onFinish = (values) => {
     values.bookedTimesSlots = [];
-    dispatch(addCar(values));
+    addCar(values, dispatch, navigate);
   };
   return (
     <Layout>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 
-export const getAllCars = () => async (dispatch) => {
+export const getAllCars = async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
   try {
     const res = await axios.get("/api/cars/getallcars");
@@ -13,14 +13,14 @@ export const getAllCars = () => async (dispatch) => {
   }
 };
 
-export const addCar = (reqObj) => async (dispatch) => {
+export const addCar = async (reqObj, dispatch, navigate) => {
   dispatch({ type: "LOADING", payload: true });
   try {
     await axios.post("/api/cars/addcar", reqObj);
     dispatch({ type: "LOADING", payload: false });
     message.success("Add Car Success");
     setTimeout(() => {
-      window.location.href = "/admin";
+      navigate("/admin")
     }, 500);
   } catch (err) {
     console.log(err);
@@ -29,14 +29,14 @@ export const addCar = (reqObj) => async (dispatch) => {
   }
 };
 
-export const editCar = (reqObj) => async (dispatch) => {
+export const editCar = async (reqObj, dispatch, navigate) => {
   dispatch({ type: "LOADING", payload: true });
   try {
     await axios.post("/api/cars/editcar", reqObj);
     dispatch({ type: "LOADING", payload: false });
     message.success("Edit Car Success");
     setTimeout(() => {
-      window.location.href = "/admin";
+      navigate("/admin")
     }, 500);
   } catch (err) {
     console.log(err);
@@ -45,7 +45,7 @@ export const editCar = (reqObj) => async (dispatch) => {
   }
 };
 
-export const deleteCar = (reqObj) => async (dispatch) => {
+export const deleteCar = async (reqObj, dispatch) => {
   dispatch({ type: "LOADING", payload: true });
   try {
     await axios.post("/api/cars/deletecar", reqObj);

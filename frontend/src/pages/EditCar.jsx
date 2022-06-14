@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCars, editCar } from "../redux/actions/carsActions";
 import Loading from "../components/Loading";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditCar = () => {
   const { carid } = useParams();
@@ -13,19 +13,20 @@ const EditCar = () => {
   const { loading } = useSelector((state) => state.alertsReducer);
   const [car, setCar] = useState();
   const [totalCars, setTotalCars] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (cars.length === 0) {
-      dispatch(getAllCars());
+     getAllCars(dispatch)
     } else {
       setCar(cars.find((item) => item._id === carid));
       setTotalCars(cars);
     }
-  }, [cars]);
+  }, [cars, dispatch, carid]);
 
   const onFinish = (values) => {
     values._id = car._id;
-    dispatch(editCar(values));
+    editCar(values, dispatch, navigate)
   };
 
   return (

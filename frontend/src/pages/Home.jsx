@@ -16,7 +16,7 @@ function Home() {
   const [totalCars, setTotalCars] = useState([]);
 
   useEffect(() => {
-    dispatch(getAllCars());
+    getAllCars(dispatch);
   }, [dispatch]);
 
   useEffect(() => {

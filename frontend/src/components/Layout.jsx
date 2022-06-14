@@ -1,25 +1,24 @@
 import React from "react";
 import { Menu, Dropdown, Button, Row, Col } from "antd";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import { userLogout } from "../redux/actions/userActions";
+import { useDispatch } from "react-redux";
 
 function Layout(props) {
   const user = JSON.parse(localStorage.getItem("user"));
-  const isAdmin = user.isAdmin;
+  const isAdmin = user?.isAdmin;
+  const dispatch = useDispatch();
   const menu = (
     <Menu>
       <Menu.Item>
         <a href="/">Home</a>
       </Menu.Item>
-      {/* <Menu.Item>
-        <a href="/bookings">Bookings</a>
-      </Menu.Item> */}
       <Menu.Item>
         <a href="/admin">Admin</a>
       </Menu.Item>
       <Menu.Item
         onClick={() => {
-          localStorage.removeItem("user");
-          window.location.href = "/login";
+          userLogout(dispatch);
         }}
       >
         <li>Logout</li>
@@ -38,9 +37,9 @@ function Layout(props) {
               </Link>
               <Dropdown overlay={menu} placement="bottomCenter">
                 {isAdmin ? (
-                  <Button>{user.name.toUpperCase()} (admin)</Button>
+                  <Button>{user.name?.toUpperCase()} (admin)</Button>
                 ) : (
-                  <Button>{user.name.toUpperCase()}</Button>
+                  <Button>{user.name?.toUpperCase()}</Button>
                 )}
               </Dropdown>
             </div>

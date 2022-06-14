@@ -11,8 +11,9 @@ import Admin from "./pages/Admin";
 import EditCar from "./pages/EditCar";
 
 function App() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"))
   const isAdmin = user?.isAdmin;
+  console.log(user);
   return (
     <div className="App">
       <BrowserRouter>
@@ -47,7 +48,11 @@ function App() {
           ) : (
             <Route path="*" element={<Navigate to="/" />} />
           )}
-          <Route path="/login" element={<Login />} />
+          {!user ? (
+            <Route path="/login" element={<Login />} />
+          ) : (
+            <Route path="*" element={<Navigate to="/" />} />
+          )}
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>

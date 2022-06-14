@@ -13,7 +13,7 @@ function Login() {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
   const onFinish = (values) => {
-    dispatch(userLogin(values));
+    userLogin(values, dispatch);
   };
   return (
     <div className="login">
