@@ -7,14 +7,14 @@ export const userLogin = async (reqObj, dispatch) => {
     const res = await axios.post("/api/users/login", reqObj);
     localStorage.setItem("user", JSON.stringify(res.data));
     dispatch({ type: "GET_USER", payload: res.data });
-    message.success("Login Success");
+    message.success("Đăng nhập thành công");
     setTimeout(() => {
       window.location.href = "/";
     }, 1000);
     dispatch({ type: "LOADING", payload: false });
   } catch (err) {
     console.log(err);
-    message.error("Something went wrong");
+    message.error("Sai tài khoản hoặc mật khẩu");
     dispatch({ type: "LOADING", payload: false });
   }
 };
@@ -23,14 +23,14 @@ export const userRegister = async (reqObj, dispatch, navigate) => {
   dispatch({ type: "LOADING", payload: true });
   try {
     await axios.post("/api/users/register", reqObj);
-    message.success("Register Success");
+    message.success("Đăng kí thành công");
     setTimeout(() => {
       navigate("/login");
     }, 500);
     dispatch({ type: "LOADING", payload: false });
   } catch (err) {
     console.log(err);
-    message.error("Something went wrong");
+    message.error("Đăng kí thất bại, vui lòng thử lại");
     dispatch({ type: "LOADING", payload: false });
   }
 };
@@ -40,12 +40,12 @@ export const userLogout = async (dispatch) => {
   try {
     setTimeout(() => {
       localStorage.clear();
-      window.location.href = "/login";
+      window.location.reload();
     }, 500);
     dispatch({ type: "LOADING", payload: false });
   } catch (err) {
     console.log(err);
-    message.error("Something went wrong");
+    message.error("Đăng xuất thất bại");
     dispatch({ type: "LOADING", payload: false });
   }
 };

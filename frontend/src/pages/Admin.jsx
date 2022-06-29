@@ -61,10 +61,10 @@ function Admin() {
           />
         </Col>
       </Row>
-      <h1 className="text-center font-weight-bold mt-5">ADMIN</h1>
+      <h1 className="text-center font-weight-bold mt-5">Quản Trị</h1>
       <div className="position-fixed pl-2">
         <Link to="/addcar">
-          <button className="btn1">ADD CAR</button>
+          <button className="btn1">Thêm xe</button>
         </Link>
       </div>
       {loading === true && <Loading />}
@@ -78,7 +78,7 @@ function Admin() {
                   <div className="pl-2 pb-2">
                     <p className="title">{car.name}</p>
                     <p className="desc font-weight-bold">
-                      RentPerHour: {car.rentPerHour}$
+                      Giá thuê: {car.rentPerHour}$
                     </p>
                   </div>
                   <div className="mr-3">
@@ -89,12 +89,12 @@ function Admin() {
                       />
                     </Link>
                     <Popconfirm
-                      title="Are you sure to delete this car?"
+                      title="Bạn chắc chắn muốn xóa xe?"
                       onConfirm={() => {
                         deleteCar({ carid: car._id }, dispatch);
                       }}
-                      okText="Yes"
-                      cancelText="No"
+                      okText="Có"
+                      cancelText="Không"
                     >
                       <DeleteOutlined
                         style={{ color: "red", cursor: "pointer" }}

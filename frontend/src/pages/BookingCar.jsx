@@ -23,6 +23,7 @@ function BookingCar() {
   const [driver, setDriver] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cars.length === 0) {
@@ -45,8 +46,6 @@ function BookingCar() {
     setTo(moment(values[1]).format("MMM DD yyyy HH:mm"));
     setTotalHours(values[1].diff(values[0], "hours"));
   };
-
-  const navigate = useNavigate();
 
   const onToken = (token) => {
     const reqObj = {
@@ -77,16 +76,16 @@ function BookingCar() {
         </Col>
         <Col lg={10} sm={24} xs={24}>
           <Divider type="horizontal" dashed>
-            <h1>Info of Car</h1>
+            <h1>Thông Tin Xe</h1>
           </Divider>
           <div style={{ textAlign: "right", fontWeight: "bold" }}>
             <p>{car.name}</p>
-            <p>Rental Costs: {car.rentPerHour}$/h</p>
-            <p>Fuel Type: {car.fuelType} </p>
-            <p>Number of seats: {car.capacity}</p>
+            <p>Giá thuê xe theo giờ: {car.rentPerHour}$/h</p>
+            <p>Loại nhiên liệu: {car.fuelType} </p>
+            <p>Số ghế ngồi: {car.capacity}</p>
           </div>
           <Divider type="horizontal" dashed>
-            Select Time Slots
+            Lựa chọn thời gian
           </Divider>
           <RangePicker
             showTime={{ format: "HH:mm" }}
@@ -101,15 +100,15 @@ function BookingCar() {
               setShowModal(true);
             }}
           >
-            See Booked Slots
+            Xem lịch đã thuê xe này
           </button>
           {from && to && (
             <div className="text-right">
               <p>
-                Total: <b>{totalHours} hours</b>
+                Tổng thời gian: <b>{totalHours} hours</b>
               </p>
               <p>
-                Rent Per Hours: <b>{car.rentPerHour}</b>
+                Giá thuê xe theo giờ: <b>{car.rentPerHour}$</b>
               </p>
               <Checkbox
                 onChange={(e) => {
@@ -120,9 +119,9 @@ function BookingCar() {
                   }
                 }}
               >
-                Driver Required
+                Yêu cầu tài có tài xế
               </Checkbox>
-              <h3>Total Amount: {totalAmount ? totalAmount : 0} $</h3>
+              <h3>Tổng cộng: {totalAmount ? totalAmount : 0} $</h3>
               <StripeCheckout
                 token={onToken}
                 stripeKey={process.env.REACT_APP_PUBLIC_STRIPE_KEY}
@@ -130,7 +129,7 @@ function BookingCar() {
                 amount={totalAmount * 100}
                 currency="usd"
               >
-                <button className="btn1 text-center">Book Now</button>
+                <button className="btn1 text-center">Đặt ngay</button>
               </StripeCheckout>
             </div>
           )}
@@ -140,7 +139,7 @@ function BookingCar() {
             visible={showModal}
             closable={false}
             footer={false}
-            title="Booked Times Slots"
+            title="Lịch đã thuê xe này"
           >
             {car && (
               <div className="p-2">
@@ -156,7 +155,7 @@ function BookingCar() {
                     className="btn1 mt-2"
                     onClick={() => setShowModal(false)}
                   >
-                    Close
+                    Đóng
                   </button>
                 </div>
               </div>

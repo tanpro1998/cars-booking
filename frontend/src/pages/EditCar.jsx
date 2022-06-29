@@ -41,45 +41,45 @@ const EditCar = () => {
               layout="vertical"
               onFinish={onFinish}
             >
-              <h3 className="text-center font-weight-bold">Edit Car</h3>
+              <h3 className="text-center font-weight-bold">Chỉnh sửa thông tin xe</h3>
               <hr />
               <Form.Item
                 name="name"
-                label="Car name"
+                label="Tên xe"
                 rules={[{ required: true }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
                 name="image"
-                label="Image Url"
+                label="Ảnh"
                 rules={[{ required: true }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
                 name="rentPerHour"
-                label="Rent per hour"
+                label="Giá thuê ($)"
                 rules={[{ required: true }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
                 name="capacity"
-                label="Capacity"
+                label="Số ghế ngồi"
                 rules={[{ required: true }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
                 name="fuelType"
-                label="Fuel Type"
+                label="Loại nhiên liệu"
                 rules={[{ required: true }]}
               >
                 <Input />
               </Form.Item>
               <div className="text-center">
-                <button className="btn1 mt-5">SUBMIT</button>
+                <button className="btn1 mt-5">Xác nhận</button>
               </div>
             </Form>
           )}

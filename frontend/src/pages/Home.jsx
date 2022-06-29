@@ -70,12 +70,17 @@ function Home() {
                   <div className="pl-2">
                     <p className="title">{car.name.toUpperCase()}</p>
                     <p className="desc font-weight-bold">
-                      Rental Costs: {car.rentPerHour}$/h
+                      Giá thuê: {car.rentPerHour}$/h
                     </p>
                   </div>
                   <div>
                     <button className="btn1 mr-2">
-                      <Link to={`/booking/${car._id}`}>Book Now</Link>
+                      <Link
+                        to={`/booking/${car._id}`}
+                        style={{ color: "white" }}
+                      >
+                        Đặt ngay
+                      </Link>
                     </button>
                   </div>
                 </div>

@@ -1,9 +1,8 @@
 import React from "react";
 import { Menu, Dropdown, Button, Row, Col } from "antd";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { userLogout } from "../redux/actions/userActions";
 import { useDispatch } from "react-redux";
-
 function Layout(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const isAdmin = user?.isAdmin;
@@ -11,17 +10,17 @@ function Layout(props) {
   const menu = (
     <Menu>
       <Menu.Item>
-        <a href="/">Home</a>
+        <a href="/">Trang chủ</a>
       </Menu.Item>
       <Menu.Item>
-        <a href="/admin">Admin</a>
+        <a href="/admin">Trang quản trị</a>
       </Menu.Item>
       <Menu.Item
         onClick={() => {
           userLogout(dispatch);
         }}
       >
-        <li>Logout</li>
+        <li>Đăng xuất</li>
       </Menu.Item>
     </Menu>
   );
@@ -34,14 +33,23 @@ function Layout(props) {
             <div className="d-flex align-items-center justify-content-between">
               <Link to="/">
                 <h1 className="logo">Flash Cars.</h1>
+                <p className="sub-logo">
+                  Thú vị trên mọi hành trình! &gt;&gt;&gt;
+                </p>
               </Link>
-              <Dropdown overlay={menu} placement="bottomCenter">
-                {isAdmin ? (
-                  <Button>{user.name?.toUpperCase()} (admin)</Button>
-                ) : (
-                  <Button>{user.name?.toUpperCase()}</Button>
-                )}
-              </Dropdown>
+              {user ? (
+                <Dropdown overlay={menu} placement="bottomCenter">
+                  {user && isAdmin ? (
+                    <Button>{user?.name?.toUpperCase()} (admin)</Button>
+                  ) : (
+                    <Button>{user?.name?.toUpperCase()}</Button>
+                  )}
+                </Dropdown>
+              ) : (
+                <Link to="/login" style={{ fontSize: "20px", color: "white" }}>
+                  Đăng nhập
+                </Link>
+              )}
             </div>
           </Col>
         </Row>

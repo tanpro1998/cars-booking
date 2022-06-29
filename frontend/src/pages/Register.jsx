@@ -37,35 +37,35 @@ function Register() {
             className="login-form p-5 ml-5"
             onFinish={onFinish}
           >
-            <h1>Register</h1>
+            <h1>Đăng kí</h1>
             <hr />
             <Form.Item name="name" label="Name" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
             <Form.Item
               name="username"
-              label="Username"
+              label="Tài khoản"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               name="password"
-              label="Password"
+              label="Mật khẩu"
               rules={[{ required: true }]}
             >
               <Input type="password" />
             </Form.Item>
             <Form.Item
               name="cfpassword"
-              label="Confirm Password"
+              label="Xác nhận mật khẩu"
               rules={[{ required: true }]}
             >
-              <Input type="password" />
+              <Input type="password"/>
             </Form.Item>
-            <button className="btn2">Register</button>
+            <button className="btn2">Đăng kí</button>
             <Link to="/login">
-              <p>Already account, click hear to login</p>
+              <p>Đã có tài khoản, đăng nhập ngay</p>
             </Link>
           </Form>
         </Col>

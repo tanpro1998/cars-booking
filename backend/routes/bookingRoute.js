@@ -2,9 +2,6 @@ import express from "express";
 const bookingsRouter = express.Router();
 import { Booking } from "../models/bookingModel.js";
 import { Cars } from "../models/carsModel.js";
-// const stripe = require("stripe")(
-//   "sk_test_51JbgRzDrivpegEIzHQVZVQV1e6pSatsLAG3Zipwcr8jTFsHn2NQEdxxbLSmrnqRQDKdfDCgmJeKehyGEOEQAW2gd00vQ2A1bcr"
-// );
 import Stripe from "stripe";
 
 const stripe = Stripe(

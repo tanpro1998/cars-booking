@@ -11,18 +11,13 @@ import Admin from "./pages/Admin";
 import EditCar from "./pages/EditCar";
 
 function App() {
-  const user = JSON.parse(localStorage.getItem("user"))
+  const user = JSON.parse(localStorage.getItem("user"));
   const isAdmin = user?.isAdmin;
-  console.log(user);
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          {user ? (
-            <Route path="/" element={<Home />} />
-          ) : (
-            <Route path="*" element={<Navigate to="/login" />} />
-          )}
+          <Route path="/" element={<Home />} />
           {user ? (
             <Route path="/booking/:carid" element={<BookingCar />} />
           ) : (

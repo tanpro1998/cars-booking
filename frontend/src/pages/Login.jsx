@@ -35,25 +35,25 @@ function Login() {
             className="login-form p-5 ml-5"
             onFinish={onFinish}
           >
-            <h1>Login</h1>
+            <h1>Đăng nhập</h1>
             <hr />
             <Form.Item
               name="username"
-              label="Username"
+              label="Tài khoản"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               name="password"
-              label="Password"
+              label="Mật khẩu"
               rules={[{ required: true }]}
             >
               <Input type="password" />
             </Form.Item>
-            <button className="btn2">Login</button>
+            <button className="btn2">Đăng nhập</button>
             <Link to="/register">
-              <p>Register Now</p>
+              <p>Đăng kí ngay</p>
             </Link>
           </Form>
         </Col>

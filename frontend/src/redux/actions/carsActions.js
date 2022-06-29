@@ -18,14 +18,14 @@ export const addCar = async (reqObj, dispatch, navigate) => {
   try {
     await axios.post("/api/cars/addcar", reqObj);
     dispatch({ type: "LOADING", payload: false });
-    message.success("Add Car Success");
+    message.success("Thêm xe thành công");
     setTimeout(() => {
-      navigate("/admin")
+      navigate("/admin");
     }, 500);
   } catch (err) {
     console.log(err);
     dispatch({ type: "LOADING", payload: false });
-    message.error("Something went wrong");
+    message.error("Thêm xe thất bại");
   }
 };
 
@@ -34,14 +34,14 @@ export const editCar = async (reqObj, dispatch, navigate) => {
   try {
     await axios.post("/api/cars/editcar", reqObj);
     dispatch({ type: "LOADING", payload: false });
-    message.success("Edit Car Success");
+    message.success("Chỉnh sửa thành công");
     setTimeout(() => {
-      navigate("/admin")
+      navigate("/admin");
     }, 500);
   } catch (err) {
     console.log(err);
     dispatch({ type: "LOADING", payload: false });
-    message.error("Something went wrong");
+    message.error("Chỉnh sửa thất bại");
   }
 };
 
@@ -50,13 +50,13 @@ export const deleteCar = async (reqObj, dispatch) => {
   try {
     await axios.post("/api/cars/deletecar", reqObj);
     dispatch({ type: "LOADING", payload: false });
-    message.success("Delete Car Success");
+    message.success("Xóa xe thành công");
     setTimeout(() => {
       window.location.reload();
     }, 500);
   } catch (err) {
     console.log(err);
     dispatch({ type: "LOADING", payload: false });
-    message.error("Something went wrong");
+    message.error("Xóa xe thất bại");
   }
 };

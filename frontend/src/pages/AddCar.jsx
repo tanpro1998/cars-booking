@@ -24,45 +24,45 @@ const AddCar = () => {
             layout="vertical"
             onFinish={onFinish}
           >
-            <h3 className="text-center font-weight-bold">Add New Car</h3>
+            <h3 className="text-center font-weight-bold">Thêm xe mới</h3>
             <hr />
             <Form.Item
               name="name"
-              label="Car name"
+              label="Tên xe"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               name="image"
-              label="Image Url"
+              label="Ảnh"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               name="rentPerHour"
-              label="Rent per hour"
+              label="Giá thuê ($)"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               name="capacity"
-              label="Capacity"
+              label="Số ghế ngồi"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               name="fuelType"
-              label="Fuel Type"
+              label="Loại nhiên liệu"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <div className="text-center">
-              <button className="btn1 mt-5">ADD CAR</button>
+              <button className="btn1 mt-5">Thêm xe</button>
             </div>
           </Form>
         </Col>
