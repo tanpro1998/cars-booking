@@ -4,7 +4,7 @@ import cors from "cors";
 import { ConnectDB } from "./mongoDB/Connect.js";
 import { carsRouter } from "./routes/carsRoute.js";
 import { usersRouter } from "./routes/usersRoute.js";
-import {bookingsRouter} from "./routes/bookingRoute.js";
+import { bookingsRouter } from "./routes/bookingRoute.js";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -17,7 +17,12 @@ const __dirname = dirname(__filename);
 dotenv.config();
 ConnectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.use("/api/cars", carsRouter);
