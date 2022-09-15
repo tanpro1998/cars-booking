@@ -1,6 +1,6 @@
 import express from "express";
 const bookingsRouter = express.Router();
-import { Booking } from "../models/bookingModel.js";
+import {Booking} from "../models/bookingModel.js";
 import { Cars } from "../models/carsModel.js";
 import Stripe from "stripe";
 
