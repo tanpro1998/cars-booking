@@ -4,12 +4,12 @@ import cors from "cors";
 import { ConnectDB } from "./mongoDB/Connect.js";
 import { carsRouter } from "./routes/carsRoute.js";
 import { usersRouter } from "./routes/usersRoute.js";
-import { bookingsRouter } from "./routes/bookingRoute.js";
+import {bookingsRouter} from "./routes/bookingRoute.js";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 const app = express();
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 4000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
