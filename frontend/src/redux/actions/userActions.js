@@ -1,10 +1,10 @@
-import axios from "axios";
 import { message } from "antd";
+import { publicRequest } from "../../utils/axiosInstance.js";
 
 export const userLogin = async (reqObj, dispatch) => {
   dispatch({ type: "LOADING", payload: true });
   try {
-    const res = await axios.post("/api/users/login", reqObj);
+    const res = await publicRequest.post("/api/users/login", reqObj);
     localStorage.setItem("user", JSON.stringify(res.data));
     dispatch({ type: "GET_USER", payload: res.data });
     message.success("Đăng nhập thành công");
@@ -22,7 +22,7 @@ export const userLogin = async (reqObj, dispatch) => {
 export const userRegister = async (reqObj, dispatch, navigate) => {
   dispatch({ type: "LOADING", payload: true });
   try {
-    await axios.post("/api/users/register", reqObj);
+    await publicRequest.post("/api/users/register", reqObj);
     message.success("Đăng kí thành công");
     setTimeout(() => {
       navigate("/login");
