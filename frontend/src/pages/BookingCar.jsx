@@ -71,10 +71,12 @@ function BookingCar() {
         className="d-flex align-items-center"
         style={{ minHeight: "90vh" }}
       >
-        <Col lg={10} sm={24} xs={24}>
-          <img src={car.image} alt="" className="carImg2" />
+        <Col lg={10} sm={20} xs={20}>
+          <div className="carImg2Container">
+            <img src={car.image} alt="" className="carImg2" />
+          </div>
         </Col>
-        <Col lg={10} sm={24} xs={24}>
+        <Col lg={10} sm={20} xs={20}>
           <Divider type="horizontal" dashed>
             <h1>Thông Tin Xe</h1>
           </Divider>
@@ -136,7 +138,7 @@ function BookingCar() {
         </Col>
         {car.name && (
           <Modal
-            visible={showModal}
+            open={showModal}
             closable={false}
             footer={false}
             title="Lịch đã thuê xe này"

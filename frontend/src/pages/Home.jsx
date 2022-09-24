@@ -63,7 +63,7 @@ function Home() {
       <Row justify="center" gulter={16}>
         {totalCars.map((car) => {
           return (
-            <Col lg={5} sm={24} xs={24} key={car._id}>
+            <Col lg={5} md={12} sm={24} xs={24} key={car._id}>
               <div className="car p-2 bs1">
                 <img src={car.image} alt="" className="carImg" />
                 <div className="car-content d-flex align-items-center justify-content-between">

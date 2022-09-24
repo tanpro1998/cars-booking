@@ -34,12 +34,16 @@ function Layout(props) {
               <Link to="/">
                 <h1 className="logo">Flash Cars.</h1>
                 <p className="sub-logo">
-                  <span className="back">&lt;&lt;&lt;</span>Thú vị trên mọi hành 
+                  <span className="back">&lt;&lt;&lt;</span>Thú vị trên mọi hành
                   trình! <span className="go">&gt;&gt;&gt;</span>
                 </p>
               </Link>
               {user ? (
-                <Dropdown overlay={menu} placement="bottomCenter" className="dropdown">
+                <Dropdown
+                  overlay={menu}
+                  placement="bottom"
+                  className="dropdown"
+                >
                   {user && isAdmin ? (
                     <Button>{user?.name?.toUpperCase()} (admin)</Button>
                   ) : (
