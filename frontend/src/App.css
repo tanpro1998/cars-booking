@@ -262,6 +262,13 @@ p {
   }
 }
 
+@media screen and (max-width: 414px) {
+  .carImg2 {
+    padding-top: 4rem;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 390px) {
   .carImg2 {
     width: 100%;
