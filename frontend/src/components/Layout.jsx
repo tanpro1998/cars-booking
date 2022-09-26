@@ -61,7 +61,7 @@ function Layout(props) {
       </div>
       <div className="content">{props.children}</div>
       <div className="footer-content mt-5">
-        <p className="text-center font-weight-bold">Design by Flash.</p>
+        <p className="text-center font-weight-bold p-2 footer-text">Design by Flash.</p>
         <hr />
       </div>
     </div>
