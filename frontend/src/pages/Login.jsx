@@ -29,10 +29,10 @@ function Login() {
           />
           <h1 className="login-logo">FLASH CARS</h1>
         </Col>
-        <Col lg={8} md={22} xs={21} className="text-left p-5">
+        <Col lg={8} md={22} xs={24} className="text-left p-5 ">
           <Form
             layout="vertical"
-            className="login-form p-5 ml-5"
+            className="login-form p-5"
             onFinish={onFinish}
           >
             <h1>Đăng nhập</h1>

@@ -11,10 +11,10 @@ AOS.init();
 function Register() {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
-   userRegister(values, dispatch, navigate)
+    userRegister(values, dispatch, navigate);
   };
   return (
     <div className="login">
@@ -31,10 +31,10 @@ function Register() {
           />
           <h1 className="login-logo">FLASH CARS</h1>
         </Col>
-        <Col lg={8} md={22} xs={21} className="text-left p-5 ">
+        <Col lg={8} md={22} xs={24} className="text-left p-5 ">
           <Form
             layout="vertical"
-            className="login-form p-5 ml-5"
+            className="login-form p-5"
             onFinish={onFinish}
           >
             <h1>Đăng kí</h1>
@@ -61,7 +61,7 @@ function Register() {
               label="Xác nhận mật khẩu"
               rules={[{ required: true }]}
             >
-              <Input type="password"/>
+              <Input type="password" />
             </Form.Item>
             <button className="btn2">Đăng kí</button>
             <Link to="/login">
